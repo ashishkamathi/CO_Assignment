@@ -12,7 +12,7 @@ def typeA(oc,r1,r2,r3):
     global reg_add
     return oc+"00"+reg_add[r1]+reg_add[r2]+reg_add[r3]
 def typeF(oc):
-    return oc+"00000000000"
+    return oc+"000000000000"
 
 def convertb(a):
     li=a.split()
