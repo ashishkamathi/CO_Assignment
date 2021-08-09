@@ -13,6 +13,15 @@ def typeA(oc,r1,r2,r3):
     return oc+"00"+reg_add[r1]+reg_add[r2]+reg_add[r3]
 def typeF(oc):
     return oc+"00000000000"
+def typeB(oc,r1,im):
+    bi=bin(int(im)).replace("0b", "")
+    global reg_add
+    while len(bi)!=8:
+        bi="0"+bi
+    return oc+reg_add[r1]+bi
+
+
+    
 
 def convertb(a):
     li=a.split()
@@ -24,6 +33,14 @@ def convertb(a):
         return typeA(op_c,li[1],li[2],li[3])
     if type=="F":
         return typeF(op_c)
+    if type=="B":
+        if li[0]=="mov":
+            op_c=opp_code.get(li[0]+"i")
+            return typeB(op_c,li[1],li[2][1])
+        else:
+             return typeB(op_c,li[1],li[2][1])
+
+
 
 
 def main():
@@ -34,8 +51,8 @@ def main():
         finalbin.append(convertb(cm))
     for k in finalbin:
         sys.stdout.write(k+"\n")
-     
     
+      
 if __name__ == '__main__':
 	main()
 
