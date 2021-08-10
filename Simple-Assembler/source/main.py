@@ -11,7 +11,7 @@ reg_add={"R0":"000","R1":"001","R2":"010","R3":"011","R4":"100","R5":"101","R6":
 def typeA(oc,r1,r2,r3):
     global reg_add
     return oc+"00"+reg_add[r1]+reg_add[r2]+reg_add[r3]
-def typeA(oc,r1,r2):
+def typeC(oc,r1,r2):
     global reg_add
     return oc+"00000"+reg_add[r1]+reg_add[r2]
 def typeF(oc):
@@ -39,7 +39,7 @@ def convertb(a):
     if type=="A":
         return typeA(op_c,li[1],li[2],li[3])
     if type=="C":
-        return typeA(op_c,li[1],li[2])
+        return typeC(op_c,li[1],li[2])
     if type=="F":
         return typeF(op_c)
     if type=="B":
