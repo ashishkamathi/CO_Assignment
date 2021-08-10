@@ -24,8 +24,6 @@ def typeB(oc,r1,im):
     return oc+reg_add[r1]+bi
 
 
-    
-
 def convertb(a):
     li=a.split()
     global opp_dic,opp_code
@@ -48,8 +46,6 @@ def convertb(a):
             return typeB(op_c,li[1],li[2][1])
         else:
              return typeB(op_c,li[1],li[2][1])
-
-
 
 
 def main():
