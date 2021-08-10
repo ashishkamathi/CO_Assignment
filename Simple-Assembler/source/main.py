@@ -1,6 +1,6 @@
 import sys
 finalbin=[]
-opp_dic={"add":"A","sub":"A","mov":"B","ld":"D","st":"D","mul":"A","div":"C","rs":"B","ls":"B","xor":"A","or":"A",
+opp_dic={"add":"A","sub":"A","movi":"B","mov":"C","ld":"D","st":"D","mul":"A","div":"C","rs":"B","ls":"B","xor":"A","or":"A",
 "and":"A","not":"C","cmp":"C","jmp":"E","jlt":"E","jgt":"E","je":"E","hlt":"F"}
 opp_code={"add":"00000","sub":"00001","movi":"00010","mov":"00011","ld":"00100","st":"00101","mul":"00110","div":"00111",
 "rs":"01000","ls":"01001","xor":"01010","or":"01011",
@@ -27,6 +27,10 @@ def convertb(a):
     li=a.split()
     global opp_dic,opp_code
     type=opp_dic.get(li[0])
+ 
+    if type=="C" and li[2][0]=="$":
+        type="B"
+
     if type!=None:
         op_c=opp_code.get(li[0])
     if type=="A":
@@ -44,6 +48,7 @@ def convertb(a):
 
 
 def main():
+    #print(convertb("mov R1 $5"))
     complete_input = sys.stdin.read()
     commands=complete_input.splitlines()
     global finalbin
