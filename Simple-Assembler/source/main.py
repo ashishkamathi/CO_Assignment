@@ -1,5 +1,6 @@
 import sys
 finalbin=[]
+linescount = 0
 opp_dic={"add":"A","sub":"A","movi":"B","mov":"C","ld":"D","st":"D","mul":"A","div":"C","rs":"B","ls":"B","xor":"A","or":"A",
 "and":"A","not":"C","cmp":"C","jmp":"E","jlt":"E","jgt":"E","je":"E","hlt":"F"}
 opp_code={"add":"00000","sub":"00001","movi":"00010","mov":"00011","ld":"00100","st":"00101","mul":"00110","div":"00111",
@@ -14,6 +15,14 @@ def typeA(oc,r1,r2,r3):
 def typeC(oc,r1,r2):
     global reg_add
     return oc+"00000"+reg_add[r1]+reg_add[r2]
+def typeD(oc,r1,count):
+    global reg_add
+    bi=bin(count).replace("0b", "")
+    return oc+reg_add[r1]+bi
+def typeE(oc,count):
+    global reg_add
+    bi=bin(count).replace("0b", "")
+    return oc+"000"+bi
 def typeF(oc):
     return oc+"00000000000"
 def typeB(oc,r1,im):
@@ -37,6 +46,10 @@ def convertb(a):
         return typeA(op_c,li[1],li[2],li[3])
     if type=="C":
         return typeC(op_c,li[1],li[2])
+    if type=="D":
+        return typeD(op_c,li[1],linescount)
+    if type=="E":
+        return typeE(op_c,linescount)
     if type=="F":
         return typeF(op_c)
     if type=="B":
@@ -51,6 +64,8 @@ def main():
     #print(convertb("mov R1 $5"))
     complete_input = sys.stdin.read()
     commands=complete_input.splitlines()
+    global linescount
+    linescount = len(commands)
     global finalbin
     for cm in commands:
         finalbin.append(convertb(cm))
