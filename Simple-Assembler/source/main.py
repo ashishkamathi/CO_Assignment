@@ -14,6 +14,9 @@ var_count=0
 def typeA(oc,r1,r2,r3):
     global reg_add
     return oc+"00"+reg_add[r1]+reg_add[r2]+reg_add[r3]
+def typeC(oc,r1,r2):
+    global reg_add
+    return oc+"00000"+reg_add[r1]+reg_add[r2]
 def typeF(oc):
     return oc+"00000000000"
 def typeB(oc,r1,im):
@@ -26,11 +29,6 @@ def typeB(oc,r1,im):
 def typeC(oc,r1,r2):
     return oc+"00000"+reg_add[r1]+reg_add[r2]
 
-
-def typeD(oc,r1,var):
-    global var_add
-    return (oc+reg_add[r1]+var_add[var])
-
 def convertb(a):
     li=a.split()
     global opp_dic,opp_code
@@ -42,6 +40,8 @@ def convertb(a):
         op_c=opp_code.get(li[0])
     if type=="A":
         return typeA(op_c,li[1],li[2],li[3])
+    if type=="C":
+        return typeC(op_c,li[1],li[2])
     if type=="F":
         return typeF(op_c)
     if type=="B":
@@ -50,11 +50,9 @@ def convertb(a):
             return typeB(op_c,li[1],li[2][1])
         else:
              return typeB(op_c,li[1],li[2][1])
-    if type=="D":
-        return(typeD(op_c,li[1],li[2]))
-    if type=="C":
-        return(typeC(op_c,li[1],li[2]))
+  
  
+
 
 def main():
     #print(convertb("mov R1 R2"))
