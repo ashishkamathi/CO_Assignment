@@ -10,25 +10,25 @@ reg_add={"R0":"000","R1":"001","R2":"010","R3":"011","R4":"100","R5":"101","R6":
 
 def typeA(oc,r1,r2,r3):
     global reg_add
-    return oc+"00"+reg_add[r1]+reg_add[r2]+reg_add[r3]
+    return (oc + "00" + reg_add[r1]+reg_add[r2]+reg_add[r3])
 def typeF(oc):
-    return oc+"000000000000"
+    return oc + "000000000000"
 
 def convertb(a):
-    li=a.split()
+    list1 = a.split()
     global opp_dic,opp_code
-    type=opp_dic.get(li[0])
-    if type!=None:
-        op_c=opp_code.get(li[0])
-    if type=="A":
-        return typeA(op_c,li[1],li[2],li[3])
-    if type=="F":
+    type = opp_dic.get(list1[0])
+    if type != None:
+        op_c = opp_code.get(list1[0])
+    if type == "A":
+        return (typeA(op_c,list1[1],list1[2],list1[3]))
+    if type == "F":
         return typeF(op_c)
 
 
 def main():
     complete_input = sys.stdin.read()
-    commands=complete_input.splitlines()
+    commands = complete_input.splitlines()
     global finalbin
     for cm in commands:
         finalbin.append(convertb(cm))
