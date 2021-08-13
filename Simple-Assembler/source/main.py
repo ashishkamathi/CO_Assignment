@@ -29,6 +29,10 @@ def typeB(oc,r1,im):
 def typeC(oc,r1,r2):
     return oc+"00000"+reg_add[r1]+reg_add[r2]
 
+def typeD(oc,r1,var):
+    global var_add
+    return (oc+reg_add[r1]+var_add[var])
+
 def convertb(a):
     li=a.split()
     global opp_dic,opp_code
@@ -50,7 +54,10 @@ def convertb(a):
             return typeB(op_c,li[1],li[2][1])
         else:
              return typeB(op_c,li[1],li[2][1])
-  
+    if type=="D":
+        return(typeD(op_c,li[1],li[2]))
+    if type=="C":
+        return(typeC(op_c,li[1],li[2]))
  
 
 
