@@ -1,6 +1,10 @@
 # CO M21 Assignment
 Starter repository for Computer Organization, Monsoon 2021 semester, assignment at IIITD
 
+* Ashish Kamathi (2020364)
+* Sarthak Daksh(2020403)
+* Neev Swarnakar(2020390)
+
 ## Adding code
 * Add the assembler code in the `Simple-Assembler` directory. Add the commands to execute the assembler in `Simple-Assembler/run`.
 * Add the simulator code in the `SimpleSimulator` directory. Add the commands to execute the assembler in `SimpleSimulator/run`.
