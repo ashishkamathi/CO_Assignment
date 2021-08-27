@@ -1,0 +1,8 @@
+mov R1 $255
+mov R3 $1
+loop: and R2 R1 R3
+add R0 R0 R2
+rs R1 $1
+cmp R1 R4
+jgt loop
+hlt 

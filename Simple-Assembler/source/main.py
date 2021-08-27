@@ -96,9 +96,9 @@ def convertb(a):
          exit()
         if li[0]=="mov":
             op_c=opp_code.get(li[0]+"i")
-            return typeB(op_c,li[1],li[2][1])
+            return typeB(op_c,li[1],li[2][1:])
         else:
-             return typeB(op_c,li[1],li[2][1])
+             return typeB(op_c,li[1],li[2][1:])
     if type=="D":
         if len(li)<3:
          sys.stdout.write("Error Line:"+str(current_line)+":"+"Wrong format"+"\n")
@@ -119,6 +119,8 @@ def convertb(a):
         return(typeE(op_c,li[1]))
  
 def main():
+    #file2=open('Simple-Assembler\source\input.txt','r')
+    #complete_input = file2.read()
     complete_input = sys.stdin.read()
     commands=complete_input.splitlines()
     global finalbin,f,current_line,hlt_c
@@ -167,7 +169,7 @@ def main():
         else:
             finalbin.append(convertb(cm))
  
-    if commands[len(commands)-1]!="hlt":
+    if "hlt" not in commands[len(commands)-1]:
          sys.stdout.write("Error Line:"+str(current_line)+":"+"Hlt Missing"+"\n")
          f.write("Error Line:"+str(current_line)+":"+"Hltmissing"+"\n")
          exit()
